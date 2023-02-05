@@ -1,0 +1,40 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* * {
+    border: solid 1px red;
+} */
+
+.weather-header {
+    background: linear-gradient(101deg, rgba(28, 55, 255, 1) 0%, rgba(11, 0, 27, 1) 100%);
+    color: white;
+    padding: 1px;
+    text-align: center;
+}
+
+#current-weather-card {
+    padding: 15px;
+    display: block;
+}
+
+
+
+#todays-weather {
+    margin-bottom: 20px;
+}
+
+#forecast-wrapper {
+    margin-top: 20px;
+    border
+}
+
+#forecast {
+    margin: 0px;
+}
+
+#search-button {
+    background-color: rgba(23, 124, 255, 0.865);
+    color: white;
+}

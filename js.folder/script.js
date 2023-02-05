@@ -1,0 +1,127 @@
+const key = '5d4862fa13354a7e3c01431d3829c345';
+let city = 'London';
+const currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&lang=en&limit=3&appid=' + key;
+console.log(currentWeatherURL)
+
+
+// Get weather now
+$.ajax({
+    url: currentWeatherURL,
+    method: "GET"
+}).then(function (response) {
+
+    // SET UP MOMENT.JS FOR TODAY'S DATE AND THEN ADD TO VARIABLE 
+    // let todaysDate = 
+    let city = (response.name + ', ' + response.sys.country)
+    let currentTemp = Math.round((response.main.temp)) + '°C';
+    let currentWind = (response.wind.speed) + ' m/s';
+    let currentHumidity = (response.main.humidity) + '%';
+
+    // Inner text + append
+    $('#todays-weather').text('Current weather for ' + city);
+    $('#current-weather-card').append('<p>Temperature: ' + currentTemp + '</p>');
+    $('#current-weather-card').append('<p>Wind speed: ' + currentWind + '</p>');
+    $('#current-weather-card').append('<p>Humidity: ' + currentHumidity + '</p>');
+})
+
+//// APPEND TO currentWeatherCard
+const forecastURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&lang=en&limit=3&appid=' + key;
+console.log(forecastURL)
+// Get forecast
+$.ajax({
+    url: forecastURL,
+    method: "GET"
+}).then(function (response) {
+    let cityName = (response.city.name + ', ' + response.city.country)
+    console.log(cityName)
+    let temp = Math.round((response.list[0].main.temp)) + '°C'
+    console.log(temp)
+    let wind = (response.list[0].wind.speed) + ' m/s'
+    console.log(wind)
+    let humidity = (response.list[0].main.humidity) + '%'
+    console.log(humidity)
+})
+
+// // get currentWeather
+// const currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&lang=en&limit=3&appid=' + key;
+// .ajax({
+//     url: currentWeatherURL,
+//     url: forecastURL,
+//     method: "GET"
+// }).then(function (response) {
+//     // let today = Math.round((response.main.temp))
+//     // console.log(today + ' hello')
+// })
+
+
+
+
+
+
+
+//list.
+
+
+// $.ajax({
+//     url: cityURL,
+//     method: "GET"
+// }).then(function (response) {
+//     let convertedLat = (response[0].lat);
+//     let convertedLon = (response[0].lon);
+//     console.log(convertedLat)
+//     console.log(convertedLon)
+//     let units = 'metric';
+//     let lang = 'en';
+//     const queryURL = 'api.openweathermap.org/data/2.5/forecast?lat=' + convertedLat + '&lon=' + convertedLon + '&units=' + units + '&lang=' + lang + '&appid=' + key;
+//     console.log(queryURL)
+// })
+
+
+
+
+// if user searches london > 
+// find lat and lon > 
+// use the lat and lon data from 
+
+
+
+
+
+// then display weather based on lat and long from searching city name
+
+// const weatherURL = 'api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=' +key;
+// fun
+
+// const fetchForecast = () => {
+//     let lang = 'en';
+//     let units = 'metric';
+//     let url = 'api.openweathermap.org/data/2.5/forecast?';
+// }
+
+
+
+// Geo to city converter 
+// http://api.openweathermap.org/geo/1.0/direct? 
+// Example: http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=${key}
+
+// const fetchTodayWeather = () => {
+
+
+// }
+
+// const showWeather = () => {
+
+
+// }
+
+
+
+
+// #today = today's weather 
+
+
+// #forecast = 5-day forecast 
+
+
+// #search-button = button to call api 
+// could think about adding 'get current location' button. using geo-targeted location
