@@ -1,7 +1,12 @@
+
+
 const key = '5d4862fa13354a7e3c01431d3829c345';
-let city = 'London';
+let city = 'london';
 const currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&lang=en&limit=3&appid=' + key;
 console.log(currentWeatherURL)
+
+
+
 
 
 // Get weather now
@@ -31,16 +36,73 @@ console.log(forecastURL)
 $.ajax({
     url: forecastURL,
     method: "GET"
-}).then(function (response) {
-    let cityName = (response.city.name + ', ' + response.city.country)
-    console.log(cityName)
-    let temp = Math.round((response.list[0].main.temp)) + '°C'
+}).then(function (oneDay) {
+    // Forecast data from API
+    let getDate = (oneDay.list[8].dt_txt)
+    console.log(getDate)
+
+
+
+
+    let temp = Math.round((oneDay.list[8].main.temp)) + '°C'
     console.log(temp)
-    let wind = (response.list[0].wind.speed) + ' m/s'
+    let wind = (oneDay.list[8].wind.speed) + ' m/s'
     console.log(wind)
-    let humidity = (response.list[0].main.humidity) + '%'
+    let humidity = (oneDay.list[8].main.humidity) + '%'
     console.log(humidity)
+
+    // Inner text + append 
+    $('.forecast-date').text(getDate)
+    $('#card-body-1').append('<p>Temperature: ' + temp + '</p>');
+    $('#card-body-1').append('<p>Wind speed: ' + wind + '</p>');
+    $('#card-body-1').append('<p>Humidity: ' + humidity + '</p>');
+
 })
+
+
+
+// }).then(function (twoDays) {
+//     let temp = Math.round((twoDays.list[16].main.temp)) + '°C'
+//     console.log(temp)
+//     let wind = (twoDays.list[16].wind.speed) + ' m/s'
+//     console.log(wind)
+//     let humidity = (twoDays.list[16].main.humidity) + '%'
+//     console.log(humidity)
+// }).then(function (threeDays) {
+//     let temp = Math.round((threeDays.list[24].main.temp)) + '°C'
+//     console.log(temp)
+//     let wind = (threeDays.list[24].wind.speed) + ' m/s'
+//     console.log(wind)
+//     let humidity = (threeDays.list[24].main.humidity) + '%'
+//     console.log(humidity)
+// }).then(function (fourDays) {
+//     let temp = Math.round((fourDays.list[32].main.temp)) + '°C'
+//     console.log(temp)
+//     let wind = (fourDays.list[32].wind.speed) + ' m/s'
+//     console.log(wind)
+//     let humidity = (fourDays.list[32].main.humidity) + '%'
+//     console.log(humidity)
+// }).then(function (fiveDays) {
+//     let temp = Math.round((fiveDays.list[40].main.temp)) + '°C'
+//     console.log(temp)
+//     let wind = (fiveDays.list[40].wind.speed) + ' m/s'
+//     console.log(wind)
+//     let humidity = (fiveDays.list[40].main.humidity) + '%'
+//     console.log(humidity)
+// })
+
+// 1 day in advance
+// list[8]
+// 2 day in advance
+// list[16]
+// 3 day in advance
+// list[24]
+// 4 day in advance
+// list[32]
+// 5 day in advance
+// list[40]
+
+
 
 // // get currentWeather
 // const currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&lang=en&limit=3&appid=' + key;

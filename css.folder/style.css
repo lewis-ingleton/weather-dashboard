@@ -1,17 +1,30 @@
+* {
+    border: solid 1px red;
+}
+
 body {
     margin: 0px;
     padding: 0px;
 }
 
-/* * {
-    border: solid 1px red;
-} */
 
 .weather-header {
     background: linear-gradient(101deg, rgba(28, 55, 255, 1) 0%, rgba(11, 0, 27, 1) 100%);
     color: white;
     padding: 1px;
     text-align: center;
+}
+
+.current-weather-card {
+    background-color: #d9efff;
+    border-radius: 5px;
+}
+
+.forecast-card {
+    margin: 5px;
+    max-width: 18.5%;
+    background-color: #d9efff;
+    border-radius: 5px;
 }
 
 #current-weather-card {
@@ -27,7 +40,7 @@ body {
 
 #forecast-wrapper {
     margin-top: 20px;
-    border
+    justify-content: center;
 }
 
 #forecast {
@@ -37,4 +50,7 @@ body {
 #search-button {
     background-color: rgba(23, 124, 255, 0.865);
     color: white;
+    margin-top: 10px;
+    width: 185px;
+    border-radius: 5px;
 }
