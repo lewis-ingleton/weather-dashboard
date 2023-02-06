@@ -2,7 +2,7 @@
 
 const key = '5d4862fa13354a7e3c01431d3829c345';
 let city = 'london';
-const currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&lang=en&limit=3&appid=' + key;
+const currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&lang=en&limit=4&appid=' + key;
 console.log(currentWeatherURL)
 
 
@@ -40,9 +40,8 @@ $.ajax({
     // Forecast data from API
     let getDate = (oneDay.list[8].dt_txt)
     console.log(getDate)
-
-
-
+    let convertedDate = moment(getDate).format('DD MMM YYYY');
+    console.log(convertedDate)
 
     let temp = Math.round((oneDay.list[8].main.temp)) + '°C'
     console.log(temp)
@@ -52,7 +51,7 @@ $.ajax({
     console.log(humidity)
 
     // Inner text + append 
-    $('.forecast-date').text(getDate)
+    $('.forecast-date').text(convertedDate);
     $('#card-body-1').append('<p>Temperature: ' + temp + '</p>');
     $('#card-body-1').append('<p>Wind speed: ' + wind + '</p>');
     $('#card-body-1').append('<p>Humidity: ' + humidity + '</p>');
@@ -61,14 +60,29 @@ $.ajax({
 
 
 
-// }).then(function (twoDays) {
-//     let temp = Math.round((twoDays.list[16].main.temp)) + '°C'
+// 48 HOURS IN FORECAST 
+// .then(function (twoDay) {
+//     // Forecast data from API
+//     let getDate = (twoDay.list[16].dt_txt)
+//     console.log(getDate)
+
+//     let temp = Math.round((twoDay.list[16].main.temp)) + '°C'
 //     console.log(temp)
-//     let wind = (twoDays.list[16].wind.speed) + ' m/s'
+//     let wind = (twoDay.list[16].wind.speed) + ' m/s'
 //     console.log(wind)
-//     let humidity = (twoDays.list[16].main.humidity) + '%'
+//     let humidity = (twoDay.list[16].main.humidity) + '%'
 //     console.log(humidity)
-// }).then(function (threeDays) {
+
+//     // Inner text + append 
+//     $('.forecast-date').text(getDate);
+//     $('#card-body-2').append('<p>Temperature: ' + temp + '</p>');
+//     $('#card-body-2').append('<p>Wind speed: ' + wind + '</p>');
+//     $('#card-body-2').append('<p>Humidity: ' + humidity + '</p>');
+// })
+
+
+// 72 HOURS+ FORECAST
+// .then(function (threeDays) {
 //     let temp = Math.round((threeDays.list[24].main.temp)) + '°C'
 //     console.log(temp)
 //     let wind = (threeDays.list[24].wind.speed) + ' m/s'
