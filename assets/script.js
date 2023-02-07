@@ -5,7 +5,7 @@ const key = '5d4862fa13354a7e3c01431d3829c345';
 let currentDate = moment();
 $(document).ready(function () {
     $('#currentDay').text(currentDate.format('Do MMMM YYYY, H:mm'));
-});
+}); 
 
 // Get current weather
 $('#search-button').on('click', function (event) {
