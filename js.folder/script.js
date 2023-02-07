@@ -19,6 +19,9 @@ $('#search-button').on('click', function (event) {
         url: currentWeatherURL,
         method: "GET"
     }).then(function (response) {
+        //Reset each time submit is clicked
+        $('#current-weather-card').empty();
+
         // Fetch data from API 
         let city = (response.name + ', ' + response.sys.country)
         let currentTemp = Math.round((response.main.temp)) + '°C';
@@ -26,7 +29,8 @@ $('#search-button').on('click', function (event) {
         let currentHumidity = (response.main.humidity) + '%';
 
         // Inner text + append
-        $('#todays-weather').text('Current weather for ' + city);
+        $('.hidden').removeClass('hidden')
+        $('#current-weather-card').append('<h3>Current weather for ' + city + '</h3>');
         $('#current-weather-card').append('<p>Temperature: ' + currentTemp + '</p>');
         $('#current-weather-card').append('<p>Wind speed: ' + currentWind + '</p>');
         $('#current-weather-card').append('<p>Humidity: ' + currentHumidity + '</p>');
@@ -44,17 +48,48 @@ $('#search-button').on('click', function (event) {
         url: forecastURL,
         method: "GET"
     }).then(function (response) {
+        //Reset each time submit is clicked
+        $('#forecast-wrapper').empty();
+
         for (i = 7; i < response.list.length; i += 8) {
             let getDate = (response.list[i].dt_txt)
             let convertedDate = moment(getDate).format('DD MMM YYYY');
             let temp = Math.round((response.list[i].main.temp)) + '°C'
             let wind = (response.list[i].wind.speed) + ' m/s'
             let humidity = (response.list[i].main.humidity) + '%'
-            $('.forecast-date').text(convertedDate);
-            $('.forecast-card').append('<p>Temperature: ' + temp + '</p>');
-            $('.forecast-card').append('<p>Wind speed: ' + wind + '</p>');
-            $('.forecast-card').append('<p>Humidity: ' + humidity + '</p>');
-            console.log(convertedDate)
+
+            const newCard = $('<div>');
+            const showHeader = $('<h3>').text('5-day forecast');
+            const showDate = $('<h5>').text(convertedDate);
+            const showTemp = $('<p>').text('Temperature: ' + temp);
+            const showWind = $('<p>').text('Wind speed: ' + wind);
+            const showHumidity = $('<p>').text('Humidity: ' + humidity);
+            $('#forecast-wrapper').append(newCard, showDate, showTemp, showWind, showHumidity)
+
+
         }
     })
 })
+
+
+//PREVIOUSLY WORKING CODE 
+// $.ajax({
+//     url: forecastURL,
+//     method: "GET"
+// }).then(function (response) {
+//     for (i = 7; i < response.list.length; i += 8) {
+//         let getDate = (response.list[i].dt_txt)
+//         let convertedDate = moment(getDate).format('DD MMM YYYY');
+//         let temp = Math.round((response.list[i].main.temp)) + '°C'
+//         let wind = (response.list[i].wind.speed) + ' m/s'
+//         let humidity = (response.list[i].main.humidity) + '%'
+//         const newCard = $('<div>')
+//         const showDate = $('.forecast-date').append(convertedDate);
+//         const showTemp = $('.forecast-card').append('<p>Temperature: ' + temp + '</p>');
+//         const showWind = $('.forecast-card').append('<p>Wind speed: ' + wind + '</p>');
+//         const showHumidity = $('.forecast-card').append('<p>Humidity: ' + humidity + '</p>');
+//         $('#forecast-wrapper').append(showDate, showTemp, showWind, showHumidity)
+
+//         console.log(convertedDate)
+//     }
+// })

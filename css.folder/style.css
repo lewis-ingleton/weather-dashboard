@@ -29,12 +29,15 @@ body {
     box-shadow: 0 8px 6px 0px gray;
 }
 
+.hidden {
+    display: none;
+}
+
 #current-weather-card {
     padding: 15px;
     display: block;
+
 }
-
-
 
 #todays-weather {
     margin-bottom: 20px;
