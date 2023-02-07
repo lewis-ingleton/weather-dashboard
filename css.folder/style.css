@@ -21,9 +21,13 @@ body {
     box-shadow: 0 8px 6px 0px gray;
 }
 
+#forecast-header {
+    display: block;
+}
+
 .forecast-card {
     margin: 5px;
-    max-width: 18.5%;
+    padding: 10px;
     background-color: #d9efff;
     border-radius: 5px;
     box-shadow: 0 8px 6px 0px gray;
@@ -46,6 +50,8 @@ body {
 #forecast-wrapper {
     margin-top: 20px;
     justify-content: center;
+    display: flex;
+    flex-direction: row;
 }
 
 #forecast {
