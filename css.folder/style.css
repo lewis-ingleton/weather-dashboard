@@ -15,13 +15,22 @@ body {
     text-align: center;
 }
 
+.search-history-button {
+    background-color: #d9efff;
+    box-shadow: 0 8px 6px -5px gray;
+    color: black;
+    margin-top: 10px;
+    width: 185px;
+    border-radius: 5px;
+}
+
 .current-weather-card {
     background-color: #d9efff;
     border-radius: 5px;
     box-shadow: 0 8px 6px 0px gray;
 }
 
-#forecast-header {
+.forecast-header {
     display: block;
 }
 

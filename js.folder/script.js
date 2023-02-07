@@ -42,6 +42,7 @@ $('#search-button').on('click', function (event) {
         let currentTemp = Math.round((response.main.temp)) + '°C';
         let currentWind = (response.wind.speed) + ' m/s';
         let currentHumidity = (response.main.humidity) + '%';
+        const searchHistoryButton = $('<button>').text(city).addClass('search-history-button')
 
         // Inner text + append
         $('.hidden').removeClass('hidden')
@@ -49,7 +50,10 @@ $('#search-button').on('click', function (event) {
         $('#current-weather-card').append('<p>Temperature: ' + currentTemp + '</p>');
         $('#current-weather-card').append('<p>Wind speed: ' + currentWind + '</p>');
         $('#current-weather-card').append('<p>Humidity: ' + currentHumidity + '</p>');
+        $('#history').prepend(searchHistoryButton)
     })
+
+
 })
 
 // Get forecasted weather 
