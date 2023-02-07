@@ -22,6 +22,16 @@ body {
     margin-top: 10px;
     width: 185px;
     border-radius: 5px;
+    border: none;
+}
+
+.search-history-button:hover {
+    background-color: #b8c8ff;
+    box-shadow: 0 8px 6px -5px gray;
+    color: black;
+    margin-top: 10px;
+    width: 185px;
+    border-radius: 5px;
 }
 
 .current-weather-card {
@@ -30,21 +40,34 @@ body {
     box-shadow: 0 8px 6px 0px gray;
 }
 
-.forecast-header {
-    display: block;
-}
-
 .forecast-card {
-    margin: 5px;
+    margin: 10px;
     padding: 10px;
     background-color: #d9efff;
     border-radius: 5px;
     box-shadow: 0 8px 6px 0px gray;
+    width: 20%;
 }
 
 .hidden {
     display: none;
 }
+
+#search-button {
+    background-color: rgba(23, 124, 255, 0.865);
+    box-shadow: 0 8px 6px -5px gray;
+    color: white;
+    margin-top: 10px;
+    width: 185px;
+    border-radius: 5px;
+}
+
+#search-button:hover {
+    background-color: white;
+    color: rgba(23, 124, 255, 0.865);
+    border-color: rgba(23, 124, 255, 0.865);
+}
+
 
 #current-weather-card {
     padding: 15px;
@@ -61,23 +84,13 @@ body {
     justify-content: center;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 
 #forecast {
     margin: 0px;
 }
 
-#search-button {
-    background-color: rgba(23, 124, 255, 0.865);
-    box-shadow: 0 8px 6px -5px gray;
-    color: white;
-    margin-top: 10px;
-    width: 185px;
-    border-radius: 5px;
-}
-
-#search-button:hover {
-    background-color: white;
-    color: rgba(23, 124, 255, 0.865);
-    border-color: rgba(23, 124, 255, 0.865);
+#forecast-header {
+    margin-top: 40px;
 }

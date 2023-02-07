@@ -1,25 +1,11 @@
 // global variables 
 const key = '5d4862fa13354a7e3c01431d3829c345';
 
-
 // Show today's date and time 
 let currentDate = moment();
 $(document).ready(function () {
     $('#currentDay').text(currentDate.format('Do MMMM YYYY, H:mm'));
 });
-
-
-// Buttons for previous searches 
-// #history - ID for buttons container
-// .list-group - class for buttons container 
-// function renderButtons() {
-//     const cityList = $('.list-group')
-
-
-
-// }
-
-
 
 // Get current weather
 $('#search-button').on('click', function (event) {
@@ -69,9 +55,10 @@ $('#search-button').on('click', function (event) {
     }).then(function (response) {
         //Reset each time submit is clicked
         $('#forecast-wrapper').empty();
+        $('#forecast-header').empty();
 
         const showHeader = $('<h3>').text('5-day forecast');
-        $('#forecast-wrapper').append(showHeader).addClass('#forecast-header');
+        $('#forecast-header').append(showHeader);
         for (i = 7; i < response.list.length; i += 8) {
             let getDate = (response.list[i].dt_txt)
             let convertedDate = moment(getDate).format('DD MMM YYYY');
