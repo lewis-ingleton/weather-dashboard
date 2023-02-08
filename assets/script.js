@@ -46,7 +46,7 @@ $('#search-button').on('click', function (event) {
 $('#search-button').on('click', function (event) {
     let city = $('#search-input').val().trim();
     event.preventDefault();
-    const forecastURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&lang=en&limit=3&appid=' + key;
+    const forecastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&lang=en&limit=3&appid=' + key;
     console.log(forecastURL)
 
     $.ajax({
