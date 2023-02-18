@@ -82,7 +82,7 @@ $('#search-button').on('click', function (event) {
             newCard.append(showDate, showIcon, showTemp, showWind, showHumidity)
             $('#forecast-wrapper').append(newCard)
 
-            console.log(FCicon)
+        
 
         }
     })
