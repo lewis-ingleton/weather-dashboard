@@ -7,12 +7,15 @@ body {
     padding: 0px;
 }
 
-
 .weather-header {
     background: linear-gradient(101deg, rgba(28, 55, 255, 1) 0%, rgba(11, 0, 27, 1) 100%);
     color: white;
-    text-align: center;
     margin-bottom: 50px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
 }
 
 .search-history-button {
@@ -20,9 +23,10 @@ body {
     box-shadow: 0 8px 6px -5px gray;
     color: black;
     margin-top: 10px;
-    width: 185px;
     border-radius: 5px;
     border: none;
+    width: fit-content;
+    padding: 10px 20px;
 }
 
 .search-history-button:hover {
@@ -49,15 +53,13 @@ body {
     width: 20%;
 }
 
-@media only screen and (max-width: 425px) {
-    .forecast-card {
-        
-        width: 43%;
-    }
-}
 
 .hidden {
     display: none;
+}
+
+#form-heading {
+    text-align: center;
 }
 
 #search-button {
@@ -67,6 +69,7 @@ body {
     margin-top: 10px;
     width: 185px;
     border-radius: 5px;
+
 }
 
 #search-button:hover {
@@ -76,9 +79,11 @@ body {
 }
 
 
+
 #current-weather-card {
     padding: 15px;
     display: block;
+
 
 }
 
@@ -94,6 +99,57 @@ body {
     justify-content: space-evenly;
 }
 
+
+
+#forecast {
+    margin: 0px;
+}
+
+#forecast-header {
+    margin-top: 40px;
+}
+
+
+/* media query */
+
+@media only screen and (max-width: 425px) {
+    .forecast-card {
+        width: 43%;
+    }
+
+    #form-heading {
+        text-align: center;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-history-button {
+        max-width: fit-content;
+        padding: 10px 20px;
+        margin: auto;
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+    #search-button {
+        display: inline-block;
+
+    }
+
+    .search-history-button {
+        max-width: fit-content;
+        padding: 10px 20px;
+    }
+}
+
 @media only screen and (max-width: 425px) {
     #forecast-wrapper {
         margin-top: 20px;
@@ -103,12 +159,4 @@ body {
         flex-wrap: wrap;
 
     }
-}
-
-#forecast {
-    margin: 0px;
-}
-
-#forecast-header {
-    margin-top: 40px;
 }
