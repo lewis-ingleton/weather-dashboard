@@ -126,7 +126,7 @@ body {
     .search-history-button {
         max-width: fit-content;
         padding: 10px 20px;
-        margin: auto;
+        margin: 5px auto;
     }
 
 }
