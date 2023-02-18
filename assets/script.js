@@ -25,7 +25,8 @@ $('#search-button').on('click', function (event) {
 
         // Fetch data from API 
         let city = (response.name + ', ' + response.sys.country)
-        let icon = (response.weather.icon);
+        let icon = (response.weather[0].icon);
+        const iconIMG = 'https://openweathermap.org/img/wn/'+ icon + '.png'
         let currentTemp = Math.round((response.main.temp)) + '°C';
         let currentWind = (response.wind.speed) + ' m/s';
         let currentHumidity = (response.main.humidity) + '%';
@@ -34,11 +35,12 @@ $('#search-button').on('click', function (event) {
         // Inner text + append
         $('.hidden').removeClass('hidden')
         $('#current-weather-card').append('<h3>Current weather for ' + city + '</h3>');
-        $('#current-weather-card').append(icon);
+        $('#current-weather-card').append('<img src=' + iconIMG + '></img>')
         $('#current-weather-card').append('<p>Temperature: ' + currentTemp + '</p>');
         $('#current-weather-card').append('<p>Wind speed: ' + currentWind + '</p>');
         $('#current-weather-card').append('<p>Humidity: ' + currentHumidity + '</p>');
         $('#history').prepend(searchHistoryButton)
+
     })
 
 
@@ -65,18 +67,22 @@ $('#search-button').on('click', function (event) {
             let getDate = (response.list[i].dt_txt)
             let convertedDate = moment(getDate).format('DD MMM YYYY');
             let temp = Math.round((response.list[i].main.temp)) + '°C'
+            let FCicon = (response.list[i].weather[0].icon);
+            const FCiconIMG = 'https://openweathermap.org/img/wn/'+ FCicon + '.png'
             let wind = (response.list[i].wind.speed) + ' m/s'
             let humidity = (response.list[i].main.humidity) + '%'
 
             const newCard = $('<div>').addClass('forecast-card');
 
             const showDate = $('<h5>').text(convertedDate);
+            const showIcon = $('<img>',{src: FCiconIMG});
             const showTemp = $('<p>').text('Temperature: ' + temp);
             const showWind = $('<p>').text('Wind speed: ' + wind);
             const showHumidity = $('<p>').text('Humidity: ' + humidity);
-            newCard.append(showDate, showTemp, showWind, showHumidity)
+            newCard.append(showDate, showIcon, showTemp, showWind, showHumidity)
             $('#forecast-wrapper').append(newCard)
 
+            console.log(FCicon)
 
         }
     })
