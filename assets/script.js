@@ -22,7 +22,7 @@ $('#search-button').on('click', function (event) {
     }).then(function (response) {
         //Reset each time submit is clicked
         $('#current-weather-card').empty();
-
+        
         // Fetch data from API 
         let city = (response.name + ', ' + response.sys.country)
         let icon = (response.weather[0].icon);
@@ -72,8 +72,9 @@ $('#search-button').on('click', function (event) {
             let wind = (response.list[i].wind.speed) + ' m/s'
             let humidity = (response.list[i].main.humidity) + '%'
 
+            // Creating new card to append data to
             const newCard = $('<div>').addClass('forecast-card');
-
+            // Data items to be appended to card
             const showDate = $('<h5>').text(convertedDate);
             const showIcon = $('<img>',{src: FCiconIMG});
             const showTemp = $('<p>').text('Temperature: ' + temp);
@@ -81,8 +82,6 @@ $('#search-button').on('click', function (event) {
             const showHumidity = $('<p>').text('Humidity: ' + humidity);
             newCard.append(showDate, showIcon, showTemp, showWind, showHumidity)
             $('#forecast-wrapper').append(newCard)
-
-        
 
         }
     })

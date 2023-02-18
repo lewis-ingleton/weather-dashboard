@@ -5,14 +5,14 @@
 body {
     margin: 0px;
     padding: 0px;
-} 
+}
 
 
 .weather-header {
     background: linear-gradient(101deg, rgba(28, 55, 255, 1) 0%, rgba(11, 0, 27, 1) 100%);
     color: white;
-    padding: 1px;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .search-history-button {
@@ -47,6 +47,13 @@ body {
     border-radius: 5px;
     box-shadow: 0 8px 6px 0px gray;
     width: 20%;
+}
+
+@media only screen and (max-width: 425px) {
+    .forecast-card {
+        
+        width: 43%;
+    }
 }
 
 .hidden {
@@ -85,6 +92,17 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 425px) {
+    #forecast-wrapper {
+        margin-top: 20px;
+        justify-content: start;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
 }
 
 #forecast {
