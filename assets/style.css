@@ -59,10 +59,6 @@ body {
     display: none;
 }
 
-#form-heading {
-    text-align: center;
-}
-
 #search-button {
     background-color: rgba(23, 124, 255, 0.865);
     box-shadow: 0 8px 6px -5px gray;
