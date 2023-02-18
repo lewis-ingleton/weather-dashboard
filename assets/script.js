@@ -25,6 +25,7 @@ $('#search-button').on('click', function (event) {
 
         // Fetch data from API 
         let city = (response.name + ', ' + response.sys.country)
+        let icon = (response.weather.icon);
         let currentTemp = Math.round((response.main.temp)) + '°C';
         let currentWind = (response.wind.speed) + ' m/s';
         let currentHumidity = (response.main.humidity) + '%';
@@ -33,6 +34,7 @@ $('#search-button').on('click', function (event) {
         // Inner text + append
         $('.hidden').removeClass('hidden')
         $('#current-weather-card').append('<h3>Current weather for ' + city + '</h3>');
+        $('#current-weather-card').append(icon);
         $('#current-weather-card').append('<p>Temperature: ' + currentTemp + '</p>');
         $('#current-weather-card').append('<p>Wind speed: ' + currentWind + '</p>');
         $('#current-weather-card').append('<p>Humidity: ' + currentHumidity + '</p>');
