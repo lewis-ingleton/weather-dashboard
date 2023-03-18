@@ -5,7 +5,7 @@ const key = '5d4862fa13354a7e3c01431d3829c345';
 let currentDate = moment();
 $(document).ready(function () {
     $('#currentDay').text(currentDate.format('Do MMMM YYYY, H:mm'));
-}); 
+});
 
 // Get current weather
 $('#search-button').on('click', function (event) {
@@ -15,6 +15,7 @@ $('#search-button').on('click', function (event) {
     const currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&lang=en&limit=4&appid=' + key;
     console.log(currentWeatherURL)
 
+    
 
     $.ajax({
         url: currentWeatherURL,
@@ -22,11 +23,11 @@ $('#search-button').on('click', function (event) {
     }).then(function (response) {
         //Reset each time submit is clicked
         $('#current-weather-card').empty();
-        
+
         // Fetch data from API 
         let city = (response.name + ', ' + response.sys.country)
         let icon = (response.weather[0].icon);
-        const iconIMG = 'https://openweathermap.org/img/wn/'+ icon + '.png'
+        const iconIMG = 'https://openweathermap.org/img/wn/' + icon + '.png'
         let currentTemp = Math.round((response.main.temp)) + '°C';
         let currentWind = (response.wind.speed) + ' m/s';
         let currentHumidity = (response.main.humidity) + '%';
@@ -41,10 +42,21 @@ $('#search-button').on('click', function (event) {
         $('#current-weather-card').append('<p>Humidity: ' + currentHumidity + '</p>');
         $('#history').prepend(searchHistoryButton)
 
-    })
+    // }).then(function renderLastRegistered() {
+    //    const getCity = localStorage.getItem('City');
+
+    //    if (getCity === null) {
+    //     return;
+    //    }
 
 
+    // })
+
+    // const cityStorage = localStorage.getItem('history')
+    // localStorage.setItem('City', city)
 })
+
+
 
 // Get forecasted weather 
 $('#search-button').on('click', function (event) {
@@ -68,7 +80,7 @@ $('#search-button').on('click', function (event) {
             let convertedDate = moment(getDate).format('DD MMM YYYY');
             let temp = Math.round((response.list[i].main.temp)) + '°C'
             let FCicon = (response.list[i].weather[0].icon);
-            const FCiconIMG = 'https://openweathermap.org/img/wn/'+ FCicon + '.png'
+            const FCiconIMG = 'https://openweathermap.org/img/wn/' + FCicon + '.png'
             let wind = (response.list[i].wind.speed) + ' m/s'
             let humidity = (response.list[i].main.humidity) + '%'
 
@@ -76,7 +88,7 @@ $('#search-button').on('click', function (event) {
             const newCard = $('<div>').addClass('forecast-card');
             // Data items to be appended to card
             const showDate = $('<h5>').text(convertedDate);
-            const showIcon = $('<img>',{src: FCiconIMG});
+            const showIcon = $('<img>', { src: FCiconIMG });
             const showTemp = $('<p>').text('Temperature: ' + temp);
             const showWind = $('<p>').text('Wind speed: ' + wind);
             const showHumidity = $('<p>').text('Humidity: ' + humidity);
@@ -86,3 +98,4 @@ $('#search-button').on('click', function (event) {
         }
     })
 })
+
